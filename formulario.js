@@ -1,34 +1,15 @@
 var formulario = document.querySelector("#form")
 
-formulario.onsubmit = function(e) {
-
-  e.prevent();
-  
-  var n = formulario.elements[0]
-  var e = formulario.elements[1]
-  var na = formulario.elements[2]
-
-  var nombre = n.value
-  var edad = e.value
-
-  var i = na.selectedIndex
-  var nacionalidad = na.options[i].value
-  console.log(nombre, edad)
-  console.log(nacionalidad)
-
-  if (nombre.length === 0) {
-    n.classList.add("error")
-  }
-  if (edad < 18 || edad > 120) {
-    e.classList.add("error")
-  }
-
-if (nombre.length > 0 
-  && (edad > 18 
-    && edad < 120) ) {
-  agregarInvitado(nombre, edad, nacionalidad)
-  }
+// agrego una furncion para ocupar los id's del html del formulario
+function logSubmit(event) {
+  log.textContent = agregarInvitado;
+  event.preventDefault();
 }
+
+const form = document.getElementById("form");
+const log = document.getElementById("log");
+form.addEventListener("submit", logSubmit);
+
 
 var botonBorrar = document.createElement("button")
 botonBorrar.textContent = "Eliminar invitado"
@@ -38,6 +19,34 @@ document.body.appendChild(corteLinea)
 document.body.appendChild(botonBorrar);
 
 function agregarInvitado(nombre, edad, nacionalidad) {
+
+  var n = formulario.elements[0]  //agrego estas variables a funcion agregarInvitado
+  var e = formulario.elements[1]//agrego estas variables a funcion agregarInvitado
+  var na = formulario.elements[2]//agrego estas variables a funcion agregarInvitado
+
+  var nombre = n.value//agrego estas variables a funcion agregarInvitado
+  var edad = e.value//agrego estas variables a funcion agregarInvitado
+
+  var i = na.selectedIndex//agrego estas variables a funcion agregarInvitado
+  var nacionalidad = na.options[i].value//agrego estas variables a funcion agregarInvitado
+  console.log(nombre, edad)//agrego estas variables a funcion agregarInvitado
+  console.log(nacionalidad)//agrego estas variables a funcion agregarInvitado
+
+
+  if (nombre.length === 0) {
+    n.classList.add("error")
+  }
+  if (edad < 18 || edad > 120) {
+    e.classList.add("error")
+  }
+  if (nombre.length > 0 
+  && (edad > 18 
+    && edad < 120) ) {
+  agregarInvitado(nombre, edad, nacionalidad)
+  }
+
+
+
 
   if (nacionalidad === "ar") {
     nacionalidad = "Argentina"
